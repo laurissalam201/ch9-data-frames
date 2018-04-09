@@ -32,31 +32,31 @@ salaries$got_raise <- salaries$change > 0
 ### cell rather than the whole row!)
 
 # What was the 2018 salary of employee 57
-
+salary_57 <- salaries[salaries$employees == "Employee 57", "random_salaries_2018"]
 
 # How many employees got a raise?
-
+nrow(salaries[salaries$got_raise == "TRUE", ])
 
 # What was the dollar value of the highest raise?
-
+highest_raise <- max(salaries$change)
 
 # What was the "name" of the employee who received the highest raise?
-
+salaries[salaries$change == highest_raise, "employees"]
 
 # What was the largest decrease in salaries between the two years?
-
+largest_decrease <- min(salaries$change)
 
 # What was the name of the employee who recieved largest decrease in salary?
-
+salaries[salaries$change == largest_decrease, "employees"]
 
 # What was the average salary change?
-
+avg_change <- mean(salaries$change)
 
 # For people who did not get a raise, how much money did they lose on average?
-
+avg_loss <- mean(salaries$change[salaries$got_raise == "FALSE"])
 
 ## Consider: do the above averages match what you expected them to be based on 
 ## how you generated the salaries?
 
 # Write a .csv file of your salary data to your working directory
-
+write.csv(salaries, 'salaries.csv')
